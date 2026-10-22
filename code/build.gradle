@@ -1,5 +1,6 @@
 plugins {
     id "java"
+    id "maven-publish"
     id "com.enonic.xp.app" version "3.6.2"
     id "com.github.node-gradle.node" version "7.1.0"
 }
@@ -119,6 +120,28 @@ repositories {
         url = "https://jitpack.io"
         // Future jitpack dependencies need to be explicitly included below. This is usually groupIds in the form of 'com.github.username'
         content { includeGroup "com.github.tineikt" }
+    }
+}
+
+publishing {
+    publications {
+        tableBuilder(MavenPublication) {
+            groupId = project.group.toString()
+            artifactId = "tablebuilder"
+            version = project.version.toString()
+            artifact(tasks.named("jar"))
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/bouvet-apps/table-builder")
+            credentials {
+                username = providers.gradleProperty("bouvetGithubUser").orNull
+                password = providers.gradleProperty("bouvetGithubToken").orNull
+            }
+        }
     }
 }
 
