@@ -1,0 +1,31 @@
+{
+  "name": "table-builder",
+  "version": "1.0.0",
+  "description": "Back-end resources for Enonic XP",
+  "license": "UNLICENSED",
+  "author": "Bouvet",
+  "scripts": {
+    "dev": "npm run watch & cd src/frontend && npm run watch",
+    "watch": "babel src/main/resources --watch --out-dir=build/resources/main --ignore \"**/*.js\",\"**/*.jsx\"",
+    "build": "npm run build:js",
+    "build:js": "babel src/main/resources --out-dir=build/resources/main --ignore \"**/*.js\",\"**/*.jsx\"",
+    "lint": "npm run lint:backend && npm run lint:xptool",
+    "lint:backend": "eslint --cache --cache-location ./build/cache/.eslintcache-backend ./src/main/resources > ./build/lint-results/backend-lint-result",
+    "lint:xptool": "xptool phrase validate > ./build/lint-results/xptool-lint-result"
+  },
+  "devDependencies": {
+    "@babel/cli": "8.0.4",
+    "@babel/core": "8.0.1",
+    "@babel/eslint-parser": "8.0.1",
+    "@babel/preset-env": "8.0.2",
+    "@bouvet-apps/xp-tool": "2.1.2",
+    "@eslint/js": "9.39.4",
+    "@types/node": "25.7.0",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint": "9.39.4",
+    "globals": "17.6.0",
+    "react": "19.2.6"
+  }
+}

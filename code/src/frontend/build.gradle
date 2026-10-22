@@ -1,0 +1,68 @@
+plugins {
+    id "com.github.node-gradle.node"
+}
+
+tasks.register("installWithCI", NpmTask) {
+    description = "Install node dependencies with ci, ignoring scripts"
+    group = "node"
+    inputs.files "package.json", "package-lock.json"
+    outputs.dir "./node_modules"
+    // install with the ci command
+    args = ["ci", "--ignore-scripts", "--quiet"]
+    outputs.cacheIf { true }
+}
+
+tasks.register("npm_install", NpmTask) {
+    description = "Install node dependencies, ignoring scripts"
+    group = "node"
+    args = ["install", "--ignore-scripts", "--quiet"]
+}
+
+tasks.register("build", NpmTask) {
+    description = "Build frontend project"
+    group = "node"
+    dependsOn("npmLint")
+    args = ["run", "build"]
+    // Only hash actual source + build config so node_modules/build/.gradle don't invalidate the task
+    inputs.dir "scripts"
+    inputs.dir "styles"
+    inputs.dir "images"
+    inputs.dir "fonts"
+    inputs.files "package.json", "package-lock.json", ".babelrc", "webpack.common.config.js", "webpack.prod.config.js", "webpack.dev.config.js",
+            "postcss.config.js"
+    outputs.dir "../../build/resources/main"
+}
+
+tasks.register("npmLint", NpmTask) {
+    description = "Run frontend lint"
+    group = "node"
+    dependsOn("installWithCI")
+    // Only hash actual lint inputs so node_modules/build/.gradle don't invalidate the task
+    inputs.dir "scripts"
+    inputs.dir "styles"
+    inputs.files "package.json", "package-lock.json", ".babelrc", "eslint.config.js", ".stylelintrc.json", ".stylelintignore"
+    // Point outputs at where the npm scripts actually write, and track style-lint-result too
+    outputs.file "../../build/lint-results/frontend-lint-result"
+    outputs.file "../../build/lint-results/style-lint-result"
+    args = ["run", "lint"]
+}
+
+tasks.register("clean", NpmTask) {
+    description = "Clean frontend project"
+    group = "node"
+    args = ["run", "clean"]
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+node {
+    // Version of node to use.
+    version = '24.18.0'
+
+    // Version of npm to use.
+    npmVersion = '11.16.0'
+    download = true
+}

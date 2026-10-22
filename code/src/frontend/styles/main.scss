@@ -1,0 +1,7 @@
+/* Container for all scss (SASS) files.
+// Import all relevant scss-files here to get them built.
+// --------------------------------------------------
+// @use "components/parts/my-part"; */
+
+@use "components/layouts/table-layout";
+@use "components/parts/table-show";

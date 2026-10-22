@@ -1,0 +1,10 @@
+{
+  "presets": [
+    // XP 7 runs on Nashorn (ES5.1), and Babel 8 defaults to modern browsers — forceAllTransforms
+    // downlevels everything to ES5 without tying us to browser compat data.
+    // No core-js polyfills here: babel-CLI emits plain files, and Nashorn's require() can't
+    // resolve the bare specifiers a polyfill plugin would inject.
+    ["@babel/preset-env", { "modules": "commonjs", "forceAllTransforms": true }]
+  ],
+  "comments": false
+}

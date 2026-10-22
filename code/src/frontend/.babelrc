@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    // Babel 8 dropped preset-env's useBuiltIns/corejs; this plugin now injects the core-js
+    // polyfills. "usage-global" adds only the polyfills each module actually uses (per the
+    // browserslist in package.json) as global imports — no manual core-js import per entry.
+    ["polyfill-corejs3", { "method": "usage-global", "version": "3.49.0" }]
+  ],
+  "comments": false
+}

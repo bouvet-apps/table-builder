@@ -1,0 +1,52 @@
+.table-show {
+  &__table-wrapper {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 7px;
+
+    td {
+      border: none;
+      padding: 8px;
+
+      > p {
+        margin: 0;
+      }
+    }
+
+    &__row,
+    &__cell {
+      color: #111;
+      background-color: #f5f2ef;
+    }
+
+    &__row {
+      &:hover,
+      &:focus-visible {
+        .table-show__table__cell {
+          filter: brightness(95%);
+        }
+      }
+    }
+  }
+
+  &__footnotes {
+    padding: 1rem 0.5rem;
+    font-size: 14px;
+
+    a {
+      color: currentcolor;
+    }
+  }
+
+  &.hasPaddingTop {
+    padding-top: 60px;
+  }
+
+  &.hasPaddingBottom {
+    padding-bottom: 60px;
+  }
+}

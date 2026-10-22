@@ -1,0 +1,117 @@
+<content-type>
+  <display-name i18n="table.displayName">Tabell</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="excelData" type="TextArea">
+      <label i18n="table.excelData">Paste Excel Table</label>
+      <help-text i18n="table.excelData.help-text">Paste area for pasting data from excel. This will generate a table based on the input. Will only work when there are no rows.</help-text>
+    </input>
+
+    <item-set name="title">
+      <label i18n="table.title">Title</label>
+      <occurrences minimum="0" maximum="1" />
+      <items>
+        <input name="text" type="TextLine">
+          <label i18n="text">Text</label>
+          <occurrences minimum="0" maximum="1" />
+        </input>
+        <input name="type" type="ComboBox">
+          <!-- @description[no]: Velg hvilken stil overskriften skal ha. -->
+          <!-- @description[en]: Choose which style the heading should have. -->
+          <label i18n="table.title.type">Heading stil</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <option value="h1" i18n="table.title.type.h1">Heading 1</option>
+            <option value="h2" i18n="table.title.type.h2">Heading 2</option>
+            <option value="h3" i18n="table.title.type.h3">Heading 3</option>
+            <option value="h4" i18n="table.title.type.h4">Heading 4</option>
+            <option value="h5" i18n="table.title.type.h5">Heading 5</option>
+            <option value="h6" i18n="table.title.type.h6">Heading 6</option>
+          </config>
+          <default>h3</default>
+        </input>
+        <input name="color" type="CustomSelector">
+          <label i18n="table.color">Color</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <service>color-options</service>
+          </config>
+        </input>
+      </items>
+    </item-set>
+
+    <item-set name="preface">
+      <label i18n="table.preface">Preface</label>
+      <occurrences minimum="0" maximum="1" />
+      <items>
+        <input name="text" type="TextLine">
+          <label i18n="text">Text</label>
+          <occurrences minimum="0" maximum="1" />
+        </input>
+        <input name="color" type="CustomSelector">
+          <label i18n="table.color">Color</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <service>color-options</service>
+          </config>
+        </input>
+      </items>
+    </item-set>
+
+    <item-set name="footnotes">
+      <label i18n="table.footnotes">Footnotes</label>
+      <occurrences minimum="0" maximum="1" />
+      <items>
+        <input name="text" type="HtmlArea">
+          <label i18n="text">Text</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <exclude>*</exclude>
+            <include>Bold Italic Underline | Link Unlink | Superscript | Undo</include>
+          </config>
+        </input>
+        <input name="color" type="CustomSelector">
+          <label i18n="table.color">Color</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <service>color-options</service>
+          </config>
+        </input>
+      </items>
+    </item-set>
+
+    <item-set name="rows">
+      <label i18n="table.row">Row</label>
+      <occurrences minimum="0" maximum="0" />
+      <items>
+        <item-set name="cells">
+          <label i18n="table.cells">Cells</label>
+          <occurrences minimum="0" maximum="0" />
+          <items>
+            <input name="cellValue" type="HtmlArea">
+              <label i18n="table.cell.value">Cell value</label>
+              <config>
+                <exclude>*</exclude>
+                <include>Bold Italic Underline | JustifyLeft JustifyCenter JustifyRight | Link Unlink | Superscript | Undo</include>
+              </config>
+            </input>
+            <input name="cellColor" type="CustomSelector">
+              <label i18n="table.cell.color">Cell color</label>
+              <occurrences minimum="0" maximum="1" />
+              <config>
+                <service>color-options</service>
+              </config>
+            </input>
+          </items>
+        </item-set>
+        <input name="rowColor" type="CustomSelector">
+          <label i18n="table.row.color">Row color</label>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <service>color-options</service>
+          </config>
+        </input>
+      </items>
+    </item-set>
+  </form>
+</content-type>

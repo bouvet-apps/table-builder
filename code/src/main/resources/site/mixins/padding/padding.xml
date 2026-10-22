@@ -1,0 +1,19 @@
+<mixin>
+    <display-name>Padding</display-name>
+    <form>
+        <input type="CheckBox" name="paddingTop">
+            <!-- @description[no]: Velg for at det skal være padding i toppen av parten. Dette øker avstanden mellom den og innholdet over. -->
+            <!-- @description[en]: Choose to add padding in the top of the part. This increases the distance between it and the content above. -->
+            <label i18n="image-text.paddingTop">Padding i topp</label>
+            <occurrences minimum="0" maximum="1"/>
+            <default>checked</default>
+        </input>
+        <input type="CheckBox" name="paddingBottom">
+            <!-- @description[no]: Velg for at det skal være padding i bunnen av parten. Dette øker avstanden mellom den og innholdet under. -->
+            <!-- @description[en]: Choose to add padding in the bottom of the part. This increases the distance between it and the content below. -->
+            <label i18n="image-text.paddingBottom">Padding i bunn</label>
+            <occurrences minimum="0" maximum="1"/>
+            <default>checked</default>
+        </input>
+    </form>
+</mixin>

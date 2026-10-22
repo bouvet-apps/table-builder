@@ -1,0 +1,14 @@
+<part>
+  <display-name i18n="table-show.displayName">Tabellvisning</display-name>
+  <description i18n="table-show.description">Velg hvilken tabell du ønsker å vise</description>
+  <form>
+    <input name="tableToPreview" type="ContentSelector">
+      <label i18n="table-show.table">Velg tabell</label>
+      <occurrences minimum="0" maximum="0" />
+      <config>
+        <allowContentType>table</allowContentType>
+      </config>
+    </input>
+    <mixin name="padding" />
+  </form>
+</part>

@@ -1,0 +1,35 @@
+<layout>
+  <display-name i18n="table-layout.displayName">Table Layout</display-name>
+  <form>
+    <input name="heading" type="TextLine">
+      <!-- @description[no]: Overskrift: Velg en passende tekst som beskriver innholdet i panelet. -->
+      <!-- @description[en]: Heading: Choose a heading that describes the panel content. -->
+      <label i18n="layout-config.heading">Overskrift</label>
+      <occurrences minimum="0" maximum="1" />
+    </input>
+    <input name="subtitle" type="TextLine">
+      <!-- @description[no]: Undertittel: Velg en passende tekst som beskriver innholdet i panelet. -->
+      <!-- @description[en]: Subtitle: Choose a subtitle that describes the panel content. -->
+      <label i18n="layout-config.subtitle">Undertittel</label>
+      <occurrences minimum="0" maximum="1" />
+    </input>
+    <input name="headingStyle" type="ComboBox">
+      <!-- @description[no]: Velg hvilken stil overskriften skal ha. -->
+      <!-- @description[en]: Choose which style the heading should have. -->
+      <label i18n="layout-config.heading-style">Overskriftstil</label>
+      <occurrences minimum="0" maximum="1" />
+      <config>
+        <option value="h1" i18n="table.title.type.h1">Heading 1</option>
+        <option value="h2" i18n="table.title.type.h2">Heading 2</option>
+        <option value="h3" i18n="table.title.type.h3">Heading 3</option>
+        <option value="h4" i18n="table.title.type.h4">Heading 4</option>
+        <option value="h5" i18n="table.title.type.h5">Heading 5</option>
+        <option value="h6" i18n="table.title.type.h6">Heading 6</option>
+      </config>
+    </input>
+    <mixin name="padding" />
+  </form>
+  <regions>
+    <region name="main" />
+  </regions>
+</layout>

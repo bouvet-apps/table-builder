@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <form>
+    <input name="styling" type="ComboBox">
+      <label i18n="site.styling">Styling</label>
+      <help-text i18n="site.styling.help-text">Default styling ships the app's own CSS. Choose No styling to leave the markup unstyled and handle it in the site's own stylesheet. Colors chosen by editors are inline and apply either way.</help-text>
+      <occurrences minimum="1" maximum="1" />
+      <config>
+        <option value="default" i18n="site.styling.default">Default styling</option>
+        <option value="custom" i18n="site.styling.custom">No styling</option>
+      </config>
+      <default>default</default>
+    </input>
+
+    <item-set name="colors">
+      <label i18n="site.colors">Table colors</label>
+      <help-text i18n="site.colors.help-text">Colors editors can choose for table rows and cells. Black, White and Transparent are always available.</help-text>
+      <occurrences minimum="0" maximum="0" />
+      <items>
+        <input name="key" type="TextLine">
+          <label i18n="site.colors.key">Key</label>
+          <help-text i18n="site.colors.key.help-text">Stable identifier stored on the table content. Changing it orphans existing choices. The keys black, white and transparent are reserved.</help-text>
+          <occurrences minimum="1" maximum="1" />
+        </input>
+        <input name="label" type="TextLine">
+          <label i18n="site.colors.label">Label</label>
+          <help-text i18n="site.colors.label.help-text">Name shown to editors in the color selector.</help-text>
+          <occurrences minimum="1" maximum="1" />
+        </input>
+        <input name="background" type="TextLine">
+          <label i18n="site.colors.background">Background color</label>
+          <help-text i18n="site.colors.background.help-text">Optional hex value, for example #373b49 or #373b4980 with opacity</help-text>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <regexp>^$|^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$</regexp>
+          </config>
+        </input>
+        <input name="text" type="TextLine">
+          <label i18n="site.colors.text">Text color</label>
+          <help-text i18n="site.colors.text.help-text">Optional hex value, for example #f5f5f5 or #f5f5f580 with opacity</help-text>
+          <occurrences minimum="0" maximum="1" />
+          <config>
+            <regexp>^$|^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$</regexp>
+          </config>
+        </input>
+      </items>
+    </item-set>
+  </form>
+</site>
